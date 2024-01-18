@@ -10,3 +10,18 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+.counter-holder{
+    background-color: black;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    padding: 1rem;
+}
+.digit{
+    color: white;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+}
