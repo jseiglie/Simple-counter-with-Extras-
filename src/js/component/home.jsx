@@ -17,8 +17,9 @@ const Home = () => {
 			let aux = table;
 			aux[i][j] = turn;
 			setTable(aux)
-			checkWinner()
-			changeTurn()
+			if (!checkWinner()) {
+				changeTurn()
+			}
 		}
 		else {
 			alert("This palce is taken... try somewhere else!")
@@ -34,8 +35,8 @@ const Home = () => {
 					table[i][j] == table[i][j + 1] &&
 					table[i][j] == table[i][j - 1]
 				) {
-					console.log("ganó")
 					setWon(true)
+					return true
 				}
 				if (
 					typeof table[i][j] != "undefined" &&
@@ -43,25 +44,26 @@ const Home = () => {
 					table[i][j] == table[i + 1][j] &&
 					table[i][j] == table[i - 1][j]
 				) {
-					console.log("ganó")
 					setWon(true)
+					return true
 				}
 				if (
 					typeof table[1][1] != "undefined" &&
 					table[0][0] == table[1][1] &&
 					table[0][0] == table[2][2]
 				) {
-					console.log("ganó")
 					setWon(true)
+					return true
 				}
 				if (
 					typeof table[1][1] != "undefined" &&
 					table[0][2] == table[1][1] &&
 					table[0][2] == table[2][0]
 				) {
-					console.log("ganó")
 					setWon(true)
+					return true
 				}
+				return false
 			})
 		)
 	}
@@ -83,7 +85,7 @@ const Home = () => {
 				<div className="pb-1">TiC TAc TOE</div>
 				<br />
 				It's {turn} turn</h1>
-			<h2 className={won ? "show" : "hide"}>Congrats player {turn}, you won!!!!</h2>
+			<h2 className={won ? "show" : "hide"}>Congrats player  {turn === "X" ? "O" : "X"}, you won!!!!</h2>
 			<table className="my-5">
 				<tbody>
 					{table.map((row, i) => (
@@ -103,5 +105,4 @@ const Home = () => {
 		</div>
 	);
 };
-
 export default Home;
